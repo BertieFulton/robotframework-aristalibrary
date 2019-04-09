@@ -28,6 +28,7 @@
 # WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+import six
 
 try:
     from setuptools import setup
@@ -38,7 +39,8 @@ from os.path import abspath, dirname, join
 CURDIR = dirname(abspath(__file__))
 
 #from AristaLibrary import __version__, __author__
-execfile(join(CURDIR, 'AristaLibrary', 'version.py'))
+fileloc = join(CURDIR, 'AristaLibrary', 'version.py')
+six.exec_(compile(open(fileloc).read(), fileloc, 'exec'))
 with open(join(CURDIR, 'README.rst')) as readme:
     README = readme.read()
 
@@ -58,7 +60,8 @@ setup(
     install_requires=[
         'docutils>=0.9',
         'pyeapi>=0.8.2,<2',
-        'robotframework>=3.0'
+        'robotframework>=3.0',
+        'six>=1.12.0'
     ]
 )
 

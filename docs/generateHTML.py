@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+import six
 import sys
 import os
 
@@ -14,11 +15,11 @@ if __name__ == '__main__':
     try:
         libdoc(ipath, opath)
     except (IndexError, KeyError):
-        print __doc__
+        six.print_(__doc__)
 
     ipath = os.path.join(ROOT, 'AristaLibrary', 'Expect.py')
     opath = os.path.join(ROOT, 'docs', 'Expect.html')
     try:
         libdoc(ipath, opath)
     except (IndexError, KeyError):
-        print __doc__
+        six.print_(__doc__)
